@@ -1,0 +1,12 @@
+/server/node_modules
+/server/dist
+/client/node_modules
+/server/dist
+
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
