@@ -14,6 +14,6 @@ export class UserController {
 
   @Get()
   findOne() {
-    return this.userService.findOne(1);
+    return this.userService.findOne('q');
   }
 }
