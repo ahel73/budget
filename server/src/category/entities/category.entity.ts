@@ -14,7 +14,7 @@ export class Category {
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @OneToMany(() => Transaction, (transaction) => transaction.user, {
+  @OneToMany(() => Transaction, (transaction) => transaction.category, {
     onDelete: 'CASCADE',
   })
   transactions: Transaction[];
