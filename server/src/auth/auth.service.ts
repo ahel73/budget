@@ -1,8 +1,8 @@
 import { UserService } from './../user/user.service';
 import { UnauthorizedException, Injectable } from '@nestjs/common';
-import { User } from 'src/user/entities/user.entity';
-import * as argon2 from "argon2";
+import * as argon2 from 'argon2';
 import { JwtService } from '@nestjs/jwt';
+import { IUser } from 'src/types/types';
 
 @Injectable()
 export class AuthService {
@@ -11,17 +11,17 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(email: string, password: string): Promise<any> {
-    const user = await this.usersService.findOne(email) as User | undefined;
+  async validateUser(email: string, password: string) {
+    const user = await this.usersService.findOne(email);
     const passwordIsMath = await argon2.verify(user.password, password);
 
     if (user && passwordIsMath) {
       return user;
     }
-    throw new UnauthorizedException("Некорректный пароль");
+    throw new UnauthorizedException(`Некорректный данные`);
   }
 
-  async login(user: User) {
+  async login(user: IUser) {
     const { id, email } = user;
     return {
       id,

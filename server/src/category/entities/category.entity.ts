@@ -1,6 +1,15 @@
 import { User } from 'src/user/entities/user.entity';
 import { Transaction } from 'src/transaction/entities/transaction.entity';
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  OneToMany,
+} from 'typeorm';
 
 @Entity()
 export class Category {
