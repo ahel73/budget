@@ -60,7 +60,7 @@ export class CategoryService {
       where: { id },
     });
 
-    if (!category) throw new NotFoundException("Редактируемой категории не существует");
+    if (!category) throw new NotFoundException(`Редактируемой категории не существует`);
 
     return await this.categoryRepository.update(id, updateCategoryDto);
   }

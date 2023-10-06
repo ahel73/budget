@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, UsePipes, ValidationPipe, Param } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 
@@ -12,8 +12,8 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @Get()
-  findOne() {
-    return this.userService.findOne('q');
+  @Get(':email')
+  findOne(@Param('email') email: string) {
+    return this.userService.findOne(email);
   }
 }
