@@ -35,6 +35,7 @@ export class CategoryService {
         user: { id },
       },
       relations: {
+        user: true,
         transactions: true,
       },
     });
@@ -44,13 +45,12 @@ export class CategoryService {
     const category = await this.categoryRepository.findOne({
       where: { id },
       relations: {
-        transactions: {
-          user: true,
-        },
+        user: true,
+        transactions: true,
       },
     });
 
-    if (!category) throw new NotFoundException("Запрашиваемой категории не существует");
+    if (!category) throw new NotFoundException(`Запрашиваемой категории не существует`);
 
     return category;
   }
@@ -70,7 +70,7 @@ export class CategoryService {
       where: { id },
     });
 
-    if (!category) throw new NotFoundException("Удаляемой категории не существует");
+    if (!category) throw new NotFoundException(`Удаляемой категории не существует`);
 
     return await this.categoryRepository.delete(id);
   }

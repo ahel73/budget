@@ -41,9 +41,9 @@ export class TransactionService {
   }
 
   async findOne(id: number) {
-    const transaction = await this.transactionRepository.find({
+    const transaction = await this.transactionRepository.findOne({
       where: {
-        user: { id },
+        id,
       },
       relations: {
         user: true,
@@ -51,7 +51,7 @@ export class TransactionService {
       },
     });
 
-    if (!transaction.length) {
+    if (!transaction) {
       throw new NotFoundException('запрашиваемой транзакции не существует');
     }
 
@@ -99,5 +99,16 @@ export class TransactionService {
       take: limit,
       skip: (page - 1) * limit,
     });
+  }
+
+  async findAllByType(id: number, type: string) {
+    const transactions = await this.transactionRepository.find({
+      where: {
+        user: { id },
+        type,
+      },
+    });
+
+    return transactions.reduce((acc, obj) => acc + obj.amount, 0);
   }
 }
