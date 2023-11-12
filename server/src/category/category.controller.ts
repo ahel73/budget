@@ -40,6 +40,7 @@ export class CategoryController {
   @Delete(':type/:id')
   @UseGuards(JwtAuthGuard, AuthorGuard)
   remove(@Param('id') id: string) {
+    console.log('llll')
     return this.categoryService.remove(+id);
   }
 }

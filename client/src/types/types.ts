@@ -21,3 +21,12 @@ export interface IResponseData {
     token: string;
     user: IResponseUser;
 }
+
+export interface ICategory {
+    title: string;
+    id: number;
+    createdAt: string;
+    updatedt: string;
+    transactions: [];
+}
+

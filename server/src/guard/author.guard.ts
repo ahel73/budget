@@ -28,12 +28,12 @@ export class AuthorGuard implements CanActivate {
         entity = await this.transactionService.findOne(id);
         console.log('transaction entity', entity);
         break;
-      case 'categori':
+      case 'category':
         entity = await this.categoryService.findOne(id);
-        console.log('categori entity', entity);
+        console.log('category entity', entity);
         break;
       default:
-        console.log('Нет запрашиваемой категории');
+        console.log('Нет запрашиваемой категории!!!!');
         throw new NotFoundException(`Нет запрашиваемой категории`);
     }
 
